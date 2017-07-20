@@ -18,10 +18,10 @@ if [ x$client = x ]; then
 fi
 
 #Check if the Keys already exist for that user
-if [ ! -e keys/$client.key ]; then
+if [ ! -e /etc/openvpn/easy-rsa/keys/$client.key ]; then
     echo "Generating keys..."
-    . vars
-    ./pkitool $client
+    source /etc/openvpn/easy-rsa/vars
+    sh /etc/openvpn/easy-rsa/pkitool $client
     echo "...keys generated."
 else
     echo "keys already exist for user $client" 
